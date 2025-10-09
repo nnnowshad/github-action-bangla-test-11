@@ -1,0 +1,27 @@
+name: Depend Job
+on: workflow_dispatch
+jobs:
+    first_jobs:
+        runs-on: ubuntu-latest
+        steps:
+            - name: first workflow job
+              run: |
+                echo "linux Shell Bash I"
+                echo "1st Workflow job Done !"
+    second_jobs:
+        runs-on: ubuntu-latest
+        needs: [first_jobs]
+        steps:
+            - name: second workflow job
+              run: |
+                echo "Linux Shell Bash II"
+                echo "2nd workflow job Done !!"
+    third-jobs:
+        runs-on: ubuntu-latest
+        needs: [first_jobs ,second_jobs]
+        steps:
+            - name: third workflow job
+              run: |
+                echo "Linux Shell Bash III"
+                echo "3rd workflow job Done !!!"
+
